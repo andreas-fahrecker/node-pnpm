@@ -1,5 +1,5 @@
-ARG NODE_BASE_IMG=node:gallium-alpine
-FROM ${NODE_BASE_IMG}
+ARG NODE_VERSION=gallium-alpine
+FROM node:${NODE_VERSION}
 RUN npm install -g pnpm
 
 LABEL org.opencontainers.image.source=https://github.com/andreas-fahrecker/node-pnpm
