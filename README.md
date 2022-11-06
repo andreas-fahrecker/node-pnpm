@@ -4,7 +4,7 @@ this simple Dockerfile just adds the [pnpm](https://pnpm.io/) package manager to
 ## Usage
 In your `Dockerfile` use the `FROM` command to include this image, with the node version tag as this images tag:
 ```
-FROM ghcr.io/andreas-fahrecker/nodepnpm:{NODE_VERSION_TAG}
+FROM ghcr.io/andreas-fahrecker/node-pnpm:{NODE_VERSION_TAG}
 ```
 
 ## License
