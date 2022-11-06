@@ -6,8 +6,8 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  build-and-push-old-images:
-    name: "Build and Push Fermium"
+  build-and-push-non-latest-images:
+    name: "Build and Push non-latest Image"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -47,8 +47,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  build-and-push-hydrogen-image:
-    name: "Build and Push Hydrogen"
+  build-and-push-latest-image:
+    name: "Build and Push Latest Image"
     runs-on: ubuntu-latest
     permissions:
       contents: read
