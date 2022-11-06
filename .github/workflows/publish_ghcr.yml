@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [fermium-alpine, gallium-alpine]
+        node_version: [fermium-alpine, fermium-slim, fermium, gallium-alpine, gallium-slim, gallium, hydrogen-slim, hydrogen]
     permissions:
       contents: read
       packages: write
