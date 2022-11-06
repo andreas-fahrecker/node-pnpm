@@ -6,17 +6,26 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
+  setup:
+    name: "Checkout and Login to Docker Registries"
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout repository
+        uses: actions/checkout@v3
+      -
+        name: Setup
+        uses: ./.github/actions/setup
+
   build-and-push-fermium-image:
     name: "Build and Push Fermium"
     runs-on: ubuntu-latest
+    needs: setup
     permissions:
       contents: read
       packages: write
     
     steps:
-      -
-        name: Setup
-        uses: ./.github/actions/setup
       -
         name: Build and push Docker image fermium-alpine
         uses: docker/build-push-action@v3
@@ -31,14 +40,12 @@ jobs:
   build-and-push-gallium-image:
     name: "Build and Push Gallium"
     runs-on: ubuntu-latest
+    needs: setup
     permissions:
       contents: read
       packages: write
     
     steps:
-      -
-        name: Setup
-        uses: ./.github/actions/setup
       -
         name: Build and push Docker image gallium-alpine
         uses: docker/build-push-action@v3
@@ -53,14 +60,12 @@ jobs:
   build-and-push-hydrogen-image:
     name: "Build and Push Hydrogen"
     runs-on: ubuntu-latest
+    needs: setup
     permissions:
       contents: read
       packages: write
     
     steps:
-      -
-        name: Setup
-        uses: ./.github/actions/setup
       -
         name: Build and push Docker image hydrogen-alpine
         uses: docker/build-push-action@v3
