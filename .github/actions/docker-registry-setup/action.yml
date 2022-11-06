@@ -1,0 +1,36 @@
+name: Docker Registry Setup
+description: "Logs in the environment to GHCR.io and Docker Hub"
+
+env:
+  REGISTRY: ghcr.io
+
+inputs:
+  DOCKER_USERNAME:
+    description: "The Dockerhub Username"
+    required: true
+  DOCKER_PASSWORD:
+    description: "The Dockerhub Password"
+    required: true
+  GHCR_USERNAME:
+    description: "The GHCR.io Username"
+    required: true
+  GHCR_PASSWORD:
+    description: "The GHCR.io Password"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    -
+      name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ inputs.DOCKER_USERNAME }}
+        password: ${{ inputs.DOCKER_PASSWORD }}
+    -
+      name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ inputs.GHCR_USERNAME }}
+        password: ${{ inputs.GHCR_PASSWORD }}
