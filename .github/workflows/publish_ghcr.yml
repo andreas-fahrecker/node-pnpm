@@ -1,4 +1,4 @@
-name: Build and Deploy to GHCR.io
+name: Build and Deploy to GHCR.io and Docker Hub
 
 on: workflow_dispatch
 
@@ -38,7 +38,7 @@ jobs:
           context: .
           build-args: NODE_VERSION=${{ matrix.node_version }}
           push: true
-          tags: andreasfahrecker/node-pnpm:${{ matrix.node_version }},ghcr.io/andreas-fahrecker/node-pnpm:${{ matrix.node_version }}
+          tags: fah16145/node-pnpm:${{ matrix.node_version }},ghcr.io/andreas-fahrecker/node-pnpm:${{ matrix.node_version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -71,6 +71,6 @@ jobs:
           context: .
           build-args: NODE_VERSION=hydrogen-alpine
           push: true
-          tags: andreasfahrecker/node-pnpm:latest,andreasfahrecker/node-pnpm:hydrogen-alpine,ghcr.io/andreas-fahrecker/node-pnpm:latest,ghcr.io/andreas-fahrecker/node-pnpm:hydrogen-alpine
+          tags: fah16145/node-pnpm:latest,fah16145/node-pnpm:hydrogen-alpine,ghcr.io/andreas-fahrecker/node-pnpm:latest,ghcr.io/andreas-fahrecker/node-pnpm:hydrogen-alpine
           cache-from: type=gha
           cache-to: type=gha,mode=max
